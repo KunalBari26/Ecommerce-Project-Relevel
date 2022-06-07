@@ -30,4 +30,9 @@ app.get('/home',async (req,res)=>{
 app.listen(config.PORT, async ()=>{
     await console.log("SERVER STARTED AND USING",config.PORT);
     //await db.sequelize.sync({ force: true });
+
+    if(process.env.SYNC) {
+        await db.sequelize.sync({ force: true });
+    }
+    
 })
